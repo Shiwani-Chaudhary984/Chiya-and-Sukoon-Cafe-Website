@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #72564c;
+  --color-primary-fixed: #ffdbce;
+  --color-primary-fixed-dim: #e4beb2;
+  --color-primary-container: #8d6e63;
+  --color-on-primary: #ffffff;
+  --color-on-primary-fixed: #2b160f;
+  --color-on-primary-fixed-variant: #5b4137;
+  --color-background: #fbf9f5;
+  --color-surface: #fbf9f5;
+  --color-surface-dim: #dbdad6;
+  --color-surface-bright: #fbf9f5;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f5f3ef;
+  --color-surface-container: #efeeea;
+  --color-surface-container-high: #eae8e4;
+  --color-surface-container-highest: #e4e2de;
+  --color-surface-variant: #e4e2de;
+  --color-surface-tint: #75584d;
+  --color-on-surface: #1b1c1a;
+  --color-on-surface-variant: #504441;
+  --color-secondary: #496800;
+  --color-secondary-container: #c8f17a;
+  --color-secondary-fixed: #c8f17a;
+  --color-secondary-fixed-dim: #add461;
+  --color-on-secondary: #ffffff;
+  --color-tertiary: #5f5c55;
+  --color-tertiary-fixed: #e7e2d8;
+  --color-tertiary-container: #78756d;
+  --color-outline: #827470;
+  --color-outline-variant: #d4c3be;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+}
+
+/* Custom Design System Classes & Utilities */
+:root {
+  --bg-cream: #fbf9f5;
+  --primary-warm: #72564c;
+  --primary-container: #8d6e63;
+  --secondary-olive: #496800;
+  --botanical-tag: #6b8e23;
+  --text-dark: #1b1c1a;
+  --text-muted: #504441;
+  --surface-white: #ffffff;
+  --surface-low: #f5f3ef;
+  --border-subtle: #e4e2de;
+}
+
+body {
+  background-color: #fbf9f5;
+  color: #1b1c1a;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-headline,
+.font-display {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-body {
+  font-family: 'Inter', sans-serif;
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+}
+
+.soft-shadow {
+  box-shadow: 0 10px 32px -4px rgba(114, 86, 76, 0.08), 0 4px 12px -2px rgba(114, 86, 76, 0.04);
+}
+
+.ambient-shadow-lg {
+  box-shadow: 0 20px 48px -8px rgba(114, 86, 76, 0.12), 0 8px 24px -4px rgba(114, 86, 76, 0.06);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.floral-arch-clip {
+  clip-path: ellipse(85% 100% at 50% 100%);
+  border-top-left-radius: 200px;
+  border-top-right-radius: 200px;
+}
+
+.floral-arch-top {
+  border-top-left-radius: 160px;
+  border-top-right-radius: 160px;
+}
+
+.hero-text-enter {
+  animation: heroFadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.hero-text-delay-1 {
+  animation-delay: 0.15s;
+}
+
+.hero-text-delay-2 {
+  animation-delay: 0.3s;
+}
+
+@keyframes heroFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.toast-enter {
+  animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Hide scrollbars cleanly */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Active tab styling */
+.nav-link.active {
+  color: #72564c;
+  border-bottom: 2px solid #72564c;
+  font-weight: 600;
+}
+
+.mobile-nav-link.active {
+  color: #72564c;
+  background-color: #ffdbce33;
+  font-weight: 600;
+}

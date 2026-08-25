@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <circle cx="50" cy="50" r="46" fill="#72564c"/>
+  <circle cx="50" cy="50" r="42" stroke="#ffdbce" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <!-- Steaming Tea Cup -->
+  <path d="M30 46h32c0 14-8 22-16 22s-16-8-16-22z" fill="#fbf9f5"/>
+  <path d="M62 49c5 0 9 3 9 7s-4 7-9 7" stroke="#fbf9f5" stroke-width="3" stroke-linecap="round"/>
+  <!-- Steam Trails -->
+  <path d="M38 38c0-5 3-7 3-10" stroke="#c8f17a" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M46 36c0-6 4-8 4-12" stroke="#c8f17a" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M54 38c0-5 3-7 3-10" stroke="#c8f17a" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Base saucer -->
+  <path d="M24 71h44" stroke="#ffdbce" stroke-width="3" stroke-linecap="round"/>
+</svg>

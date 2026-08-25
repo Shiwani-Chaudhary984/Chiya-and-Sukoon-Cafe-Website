@@ -1,0 +1,6 @@
+{
+  "name": "Chiya and Sukoon",
+  "description": "A cozy, aesthetic cafe web application featuring handcrafted Himalayan tea & coffee menus, online ordering with cart management, table reservations, stories, and photo gallery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

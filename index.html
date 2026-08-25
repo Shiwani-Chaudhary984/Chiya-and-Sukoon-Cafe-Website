@@ -1,0 +1,1137 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chiya and Sukoon | A Sanctuary for Warm Cups & Peaceful Moments</title>
+    <meta name="description" content="A cozy cafe sanctuary blending authentic Himalayan spiced Chiya, artisan coffee, handcrafted momos, and seasonal pastries in a serene floral atmosphere." />
+
+    <!-- Google Fonts: Playfair Display & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
+
+    <!-- Google Material Symbols Outlined -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="stylesheet" href="/src/index.css" />
+  </head>
+  <body class="bg-background text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed min-h-screen flex flex-col antialiased">
+    <!-- Top Announcement Bar -->
+    <div class="bg-primary text-on-primary text-xs font-medium py-2 px-4 text-center tracking-wide flex items-center justify-center gap-2">
+      <span class="material-symbols-outlined text-[16px] text-secondary-fixed">spa</span>
+      <span>Experience our Seasonal Matka Chiya & Himalayan Herbal Blends. Dine-in & Online Orders Available.</span>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 transition-all duration-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        
+        <!-- Brand Logo -->
+        <a href="#home" data-route="home" class="flex items-center gap-3 group">
+          <img src="/assets/logo.svg" alt="Chiya and Sukoon Logo" class="w-10 h-10 rounded-full shadow-sm group-hover:scale-105 transition-transform" />
+          <div class="flex flex-col">
+            <span class="font-headline text-2xl font-bold tracking-tight text-primary leading-tight">Chiya and Sukoon</span>
+            <span class="text-[10px] tracking-widest uppercase text-on-surface-variant font-medium">Cafe & Sanctuary</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#home" data-route="home" class="nav-link text-sm font-medium text-on-surface-variant hover:text-primary transition-colors py-2">Home</a>
+          <a href="#menu" data-route="menu" class="nav-link text-sm font-medium text-on-surface-variant hover:text-primary transition-colors py-2">Menu</a>
+          <a href="#about" data-route="about" class="nav-link text-sm font-medium text-on-surface-variant hover:text-primary transition-colors py-2">About Us</a>
+          <a href="#gallery" data-route="gallery" class="nav-link text-sm font-medium text-on-surface-variant hover:text-primary transition-colors py-2">Gallery</a>
+          <a href="#reservations" data-route="reservations" class="nav-link text-sm font-medium text-on-surface-variant hover:text-primary transition-colors py-2">Reservations</a>
+          <a href="#contact" data-route="contact" class="nav-link text-sm font-medium text-on-surface-variant hover:text-primary transition-colors py-2">Contact</a>
+        </nav>
+
+        <!-- Right Actions: Cart & Order Online Button -->
+        <div class="flex items-center gap-3">
+          <!-- Cart Drawer Button -->
+          <button 
+            id="header-cart-btn"
+            class="cart-drawer-toggle relative p-2.5 rounded-full hover:bg-surface-container transition-colors text-on-surface-variant hover:text-primary"
+            aria-label="Shopping Cart"
+          >
+            <span class="material-symbols-outlined text-2xl">shopping_bag</span>
+            <span class="cart-badge-count hidden absolute top-1 right-1 bg-secondary text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center ring-2 ring-surface animate-scale">
+              0
+            </span>
+          </button>
+
+          <!-- Order Online Button -->
+          <a 
+            href="#menu" 
+            data-route="menu" 
+            class="hidden sm:inline-flex items-center gap-2 bg-primary text-on-primary px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-primary/90 transition-all duration-200 shadow-sm active:scale-95"
+          >
+            <span>Order Online</span>
+            <span class="material-symbols-outlined text-base">arrow_forward</span>
+          </a>
+
+          <!-- Mobile Menu Hamburger -->
+          <button 
+            id="mobile-hamburger-btn"
+            class="mobile-menu-toggle md:hidden p-2 rounded-xl hover:bg-surface-container text-on-surface transition-colors"
+            aria-label="Toggle navigation menu"
+          >
+            <span class="material-symbols-outlined text-2xl">menu</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Slide-in Navigation Drawer -->
+    <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/40 backdrop-blur-xs z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <div id="mobile-menu-drawer" class="fixed top-0 left-0 bottom-0 w-[82%] max-w-sm bg-surface z-50 shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col p-6 border-r border-outline-variant/30">
+      <div class="flex items-center justify-between pb-6 border-b border-outline-variant/20">
+        <div class="flex items-center gap-2.5">
+          <img src="/assets/logo.svg" alt="Chiya and Sukoon Logo" class="w-8 h-8 rounded-full shadow-xs" />
+          <span class="font-headline font-bold text-xl text-primary">Chiya and Sukoon</span>
+        </div>
+        <button id="mobile-menu-close" class="p-2 rounded-full hover:bg-surface-container text-on-surface-variant">
+          <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+      </div>
+
+      <nav class="flex flex-col gap-2 py-6 flex-grow">
+        <a href="#home" data-route="home" class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-2xl text-base font-medium text-on-surface hover:bg-surface-container transition-colors">
+          <span class="material-symbols-outlined text-primary">home</span>
+          <span>Home</span>
+        </a>
+        <a href="#menu" data-route="menu" class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-2xl text-base font-medium text-on-surface hover:bg-surface-container transition-colors">
+          <span class="material-symbols-outlined text-primary">restaurant_menu</span>
+          <span>Our Menu</span>
+        </a>
+        <a href="#about" data-route="about" class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-2xl text-base font-medium text-on-surface hover:bg-surface-container transition-colors">
+          <span class="material-symbols-outlined text-primary">auto_stories</span>
+          <span>Our Story</span>
+        </a>
+        <a href="#gallery" data-route="gallery" class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-2xl text-base font-medium text-on-surface hover:bg-surface-container transition-colors">
+          <span class="material-symbols-outlined text-primary">photo_library</span>
+          <span>Gallery</span>
+        </a>
+        <a href="#reservations" data-route="reservations" class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-2xl text-base font-medium text-on-surface hover:bg-surface-container transition-colors">
+          <span class="material-symbols-outlined text-primary">table_restaurant</span>
+          <span>Reserve Table</span>
+        </a>
+        <a href="#cart" data-route="cart" class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-2xl text-base font-medium text-on-surface hover:bg-surface-container transition-colors">
+          <span class="material-symbols-outlined text-primary">shopping_bag</span>
+          <span>Your Cart (<span class="cart-badge-count">0</span>)</span>
+        </a>
+        <a href="#contact" data-route="contact" class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-2xl text-base font-medium text-on-surface hover:bg-surface-container transition-colors">
+          <span class="material-symbols-outlined text-primary">mail</span>
+          <span>Contact & Hours</span>
+        </a>
+      </nav>
+
+      <div class="pt-4 border-t border-outline-variant/20 flex flex-col gap-3">
+        <div class="text-xs text-on-surface-variant">
+          <p class="font-semibold text-on-surface">123 Tranquil Lane, San Francisco</p>
+          <p>Daily: 8:00 AM - 7:00 PM</p>
+        </div>
+        <a href="#reservations" data-route="reservations" class="w-full bg-primary text-on-primary text-center font-semibold py-3 rounded-full text-sm">
+          Book a Table
+        </a>
+      </div>
+    </div>
+
+    <!-- Quick Slide-over Cart Drawer -->
+    <div id="cart-drawer-backdrop" class="fixed inset-0 bg-black/40 backdrop-blur-xs z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <div id="cart-drawer" class="fixed top-0 right-0 bottom-0 w-[90%] max-w-md bg-surface z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col p-6 border-l border-outline-variant/30">
+      <div class="flex items-center justify-between pb-4 border-b border-outline-variant/20">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-2xl">shopping_bag</span>
+          <h3 class="font-headline font-bold text-xl text-primary">Your Cart</h3>
+          <span id="quick-cart-count" class="text-xs font-semibold bg-surface-container text-on-surface-variant px-2.5 py-0.5 rounded-full ml-1">0 items</span>
+        </div>
+        <button id="cart-drawer-close" class="p-2 rounded-full hover:bg-surface-container text-on-surface-variant">
+          <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+      </div>
+
+      <!-- Cart Items Scroll List -->
+      <div id="quick-cart-items" class="flex-grow overflow-y-auto py-4 space-y-4 no-scrollbar">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Quick Drawer Footer -->
+      <div class="pt-4 border-t border-outline-variant/20 space-y-3 bg-surface">
+        <div class="flex justify-between items-center text-sm">
+          <span class="text-on-surface-variant font-medium">Estimated Subtotal</span>
+          <span id="quick-cart-subtotal" class="font-headline font-bold text-lg text-primary">$0.00</span>
+        </div>
+        <p class="text-xs text-on-surface-variant">Taxes and delivery calculated during checkout.</p>
+        <button id="drawer-checkout-btn" class="w-full bg-primary text-on-primary font-semibold py-3.5 rounded-full flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors shadow-md">
+          <span>Go to Checkout</span>
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- MAIN VIEW CONTAINER (Tabs: Home, Menu, About, Gallery, Reservations, Cart, Contact) -->
+    <main class="flex-grow">
+      
+      <!-- ========================================================================= -->
+      <!-- VIEW: HOME (Default Screen) -->
+      <!-- ========================================================================= -->
+      <section id="view-home" class="app-view">
+        
+        <!-- Hero Section with Background Image & Floating Glass Card -->
+        <div class="relative min-h-[620px] lg:min-h-[720px] flex items-center justify-center overflow-hidden">
+          <!-- Background Image with Ambient Vignette Overlay -->
+          <img 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJXgo9poeNtnHups7XkDCrk_ylfGMq9o6w6DOwXIoy8uVp3OJiy1SsPE2EpPOAeNCOVsGzgQBqJK2p2_nG7xnWCnqaC7WDKxTLk5RjrnFyGbZg6X9oN-h71K4i5wZkoxr6lP_8zScZLWCFqDv80HSpczVNrJDa3OsTsUzDM_yM9bE_vbBPd4n5fJoDyDETrVCXxiu727oywZlkYxwwR9Bur7fIeGXR7jSq0NeEMOYswF0mSjZUkJre3BLrNcG20iVimA" 
+            alt="Chiya and Sukoon Cafe Interior with arched windows and warm lighting" 
+            class="absolute inset-0 w-full h-full object-cover object-center transform scale-102"
+            fetchpriority="high"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-black/25"></div>
+
+          <!-- Centered Frosted Glass Hero Card -->
+          <div class="relative z-10 max-w-2xl mx-4 text-center p-8 sm:p-12 glass-panel rounded-[32px] soft-shadow border border-white/80 hero-text-enter">
+            <span class="inline-flex items-center gap-1.5 bg-[#c8f17a]/30 text-secondary border border-secondary/30 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
+              <span class="material-symbols-outlined text-[14px]">local_cafe</span> Himalayan Sanctuary
+            </span>
+            <h1 class="font-headline text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary mb-4 tracking-tight leading-[1.15]">
+              Sip Chiya.<br /><span class="italic font-normal font-serif text-on-surface">Feel Sukoon.</span>
+            </h1>
+            <p class="text-on-surface-variant text-base sm:text-lg mb-8 max-w-lg mx-auto leading-relaxed">
+              A cozy corner for warm cups, handcrafted bites, and peaceful moments surrounded by botanical tranquility.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a 
+                href="#menu" 
+                data-route="menu" 
+                class="w-full sm:w-auto bg-primary text-on-primary font-semibold px-8 py-3.5 rounded-full hover:bg-primary/90 transition-all duration-200 shadow-md flex items-center justify-center gap-2"
+              >
+                <span>Explore Menu</span>
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+              </a>
+              <a 
+                href="#reservations" 
+                data-route="reservations" 
+                class="w-full sm:w-auto bg-surface-container-lowest text-primary font-semibold px-8 py-3.5 rounded-full border border-primary/20 hover:bg-surface-container transition-all duration-200 flex items-center justify-center gap-2"
+              >
+                <span class="material-symbols-outlined text-[18px]">event_seat</span>
+                <span>Reserve a Table</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Bento Grid "Our Specialties" -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+          <div class="text-center max-w-xl mx-auto mb-16">
+            <span class="text-xs font-bold uppercase tracking-widest text-secondary mb-2 block">Handcrafted with Love</span>
+            <h2 class="font-headline text-3xl sm:text-4xl font-bold text-primary mb-3">Our Specialties</h2>
+            <p class="text-on-surface-variant text-sm sm:text-base">Curated recipes inspired by the majestic Himalayas and modern artisanal cafe culture.</p>
+          </div>
+
+          <!-- Bento Grid Layout -->
+          <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[280px]">
+            
+            <!-- Bento Card 1: Signature Masala Chiya (Spans 2 cols) -->
+            <div class="md:col-span-2 relative rounded-[28px] overflow-hidden group soft-shadow">
+              <img 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvOGZwhFdQEHEGbsIXXyauZ-sZwDUirXJEgf4yGVD-6thTqTzjDf6Mq2uJltuCIPgotvhexIKq3mtFfni6Bjt3a6LWb2E8ZF30lyPET8PgEc-wFvh0ZTGYDNI_Eg7QYQAvkTodg-4JcaPruX0pbakjjNI4poAwyguLFhQyI3nufeiO6kDi8RiVHs2Oz6Y0xZOloFGcuuHPoc_-cI1WLkTeEDPfpMCG8ZwWV3VVVv-Dke5zuBchV2KY" 
+                alt="Signature Masala Chiya pouring into cups" 
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8 text-white">
+                <span class="bg-[#c8f17a] text-[#2b160f] font-bold text-[11px] px-3 py-1 rounded-full uppercase tracking-wider w-fit mb-2">Original Recipe</span>
+                <h3 class="font-headline text-2xl sm:text-3xl font-bold mb-2">Signature Masala Chiya</h3>
+                <p class="text-sm text-gray-200 mb-4 line-clamp-2">Orthodox black tea brewed with freshly crushed green cardamom, cloves, cinnamon bark, and fresh ginger.</p>
+                <a href="#menu" data-route="menu" class="text-xs font-semibold text-[#c8f17a] flex items-center gap-1 hover:underline">
+                  <span>Discover our brews</span>
+                  <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Bento Card 2: Morning Pastries -->
+            <div class="relative rounded-[28px] overflow-hidden group soft-shadow">
+              <img 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-cLadTyWLaXeYXQ2vVJrPj9R7JsYTKGsWFCSFQ7Hq4CCocVIDR9vmFEx8ojsADr-IfcD3h94gWK99Dx4MFuAH_hQfEeDsNzCmY-3BzDt_C6PUK3G6Bci-PvKlqzf_Ibl-441SLKIzZ-NgoVFuPwn1Q4Yz58oHTxvaUTbKv50wpvzwg0LFyrlJHu_YqdnLQerhd4gbxgv4k_bD1RKn7w4c61_K4O-XcgwJqDoyJupR-nnT_XOGrlER" 
+                alt="Morning Pastries & Croissants" 
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-white">
+                <h3 class="font-headline text-xl font-bold mb-1">Morning Pastries</h3>
+                <p class="text-xs text-gray-300 mb-2">Baked fresh at dawn with cultured French butter.</p>
+                <span class="text-xs font-semibold text-[#c8f17a]">Fresh daily</span>
+              </div>
+            </div>
+
+            <!-- Bento Card 3: Momos & Snacks -->
+            <div class="relative rounded-[28px] overflow-hidden group soft-shadow">
+              <img 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7ZkGC4HWZnXRnCxHg4fD4rMlP8YEaFgy2c-Uu6zBnU2I45uARt2Q1xFoPH7Mf8FVKulPuQoh4QgYp79a6fAZDmWPgJHBR6-b3SSapTCeR5cYsssPJsI-LVbJKMzx7M8AdrAD1C3lmehbrIDgKIebmpwpoNiQeG1lR4zI6iOmGTiFR-0uprzXe6fYcyfcRfmp49ht35qCYmN06ov0g4npCgpWmE2G39WyLLy8XCc_mLgGakrTceqXq" 
+                alt="Bamboo Steamer Momos & Savory Snacks" 
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-white">
+                <h3 class="font-headline text-xl font-bold mb-1">Momos & Savory</h3>
+                <p class="text-xs text-gray-300 mb-2">Bamboo steamed dumplings with spiced sesame sauce.</p>
+                <span class="text-xs font-semibold text-[#c8f17a]">Comfort Food</span>
+              </div>
+            </div>
+
+            <!-- Bento Card 4: Artisan Coffee (Full height feature with floral arch) -->
+            <div class="md:col-span-3 lg:col-span-4 bg-surface-container-lowest rounded-[32px] p-8 sm:p-10 soft-shadow border border-outline-variant/20 flex flex-col lg:flex-row items-center gap-8">
+              <div class="w-full lg:w-1/2 overflow-hidden rounded-[24px] h-64 sm:h-72">
+                <img 
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzni5xaBpqGcuHXHHh_UloG8Rh0MSC8akoMEC0E1qDfCmEVne3cwS3UbSrG94zn-pSyzeL8Jy2yIV1lmstAVKp-CpaQ9eEszOSRbveZ9sHSiFKdU8ltKZsN3GgeQO9SjVKn49Kde1Xy2kmyr15hJXpmHUZGWGAszOitmgdIoL-vPjVhlk6VzVfgERLmlcx9Bb-4NqIvKBEcUJtU4V_0K3eK4Pk-HODDrjQNocMybzHR7NikjO-eATG" 
+                  alt="Barista pouring latte art" 
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div class="w-full lg:w-1/2 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-widest text-secondary mb-2">Specialty Espresso Bar</span>
+                <h3 class="font-headline text-3xl font-bold text-primary mb-3">Artisan Coffee & Micro-Roasts</h3>
+                <p class="text-on-surface-variant text-sm sm:text-base leading-relaxed mb-6">
+                  Carefully extracted single-origin beans paired with rich oat or organic dairy milk. From our Cardamom Rose Latte to crystal cold brews, every pour is crafted with intention.
+                </p>
+                <div class="flex items-center gap-4">
+                  <a href="#menu" data-route="menu" class="bg-primary text-on-primary px-6 py-3 rounded-full text-sm font-semibold hover:bg-primary/90 transition-colors">
+                    View Coffee Menu
+                  </a>
+                  <span class="text-xs text-on-surface-variant flex items-center gap-1 font-medium">
+                    <span class="material-symbols-outlined text-secondary text-sm">check_circle</span> Organic Milk Options
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Section: Popular Items Carousel/Grid -->
+        <section class="py-16 bg-surface-container-low border-y border-outline-variant/20">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-secondary mb-1 block">Most Loved</span>
+                <h2 class="font-headline text-3xl sm:text-4xl font-bold text-primary">Popular Items</h2>
+              </div>
+              <a href="#menu" data-route="menu" class="text-primary font-semibold text-sm flex items-center gap-1 hover:underline">
+                <span>See All Menu Items</span>
+                <span class="material-symbols-outlined text-base">arrow_forward</span>
+              </a>
+            </div>
+
+            <!-- Items Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              
+              <!-- Item 1 -->
+              <div class="bg-surface-container-lowest rounded-[24px] overflow-hidden soft-shadow border border-outline-variant/20 flex flex-col group">
+                <div class="h-48 relative overflow-hidden bg-surface-container">
+                  <img 
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA97NuNuqOjmRQy8Umel4VnA1JMSuasChpvyVHmxGJRhrMuSiptxTAsptGdcceAGHnM2WUNeCInSh_1m5MyuAmCqEwe4EXUb1pxRqVLl-UA2S9rFTsIjLd5IzVX_AJpdefuGdlh5Gom96beo-L_-TkXwTeaIRDF00HYGt5FAnNx4zh7MpUCsLZd-gSZAE1Eh_wygKYG8WvSWDe9KcqWtU25HzvAXRnYv_COhm_p3IwR0aiY46aLF_Kf" 
+                    alt="Classic Nepali Chiya" 
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <span class="absolute top-3 right-3 bg-surface-container-lowest/90 backdrop-blur-xs text-xs font-bold text-secondary px-2.5 py-0.5 rounded-full">Top Brew</span>
+                </div>
+                <div class="p-5 flex flex-col flex-grow">
+                  <div class="flex justify-between items-start mb-1">
+                    <h3 class="font-headline font-bold text-lg text-primary">Classic Nepali Chiya</h3>
+                    <span class="font-bold text-primary font-headline">$4.50</span>
+                  </div>
+                  <div class="flex items-center gap-1 mb-2 text-amber-500 text-xs">
+                    <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="font-bold text-on-surface">4.9</span>
+                    <span class="text-on-surface-variant">(310)</span>
+                  </div>
+                  <p class="text-xs text-on-surface-variant mb-4 flex-grow">Traditional spiced milk tea with fresh crushed cardamom and ginger.</p>
+                  <button data-item-id="classic-nepali-chiya" class="home-add-btn w-full bg-surface-container hover:bg-primary hover:text-white text-primary font-semibold text-xs py-2.5 rounded-full transition-colors flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[16px]">add</span> Add to Cart
+                  </button>
+                </div>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="bg-surface-container-lowest rounded-[24px] overflow-hidden soft-shadow border border-outline-variant/20 flex flex-col group">
+                <div class="h-48 relative overflow-hidden bg-surface-container">
+                  <img 
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqv1To8UlaK9ump9xi-FRbeXg2EhyTBxfBJumY_gkH_rhZls-rB1beMp7X_38dfPLEBQc86EeJL7-sxQ_zO3E_53vLXduZwnH0D-drMfK461StJ8N84I-dp_LNgHRS81MuBc3MBh8dYR4Vw_M2nnVH4zhepZYc74U9B7mNovnPCIh_df-FojzIYFQ--_KvTbG-5AvgXzVZoZF4Y4Y2rP2cTTAmVYI_FT8ksT3zy-hS8aJ42y6NiLhN" 
+                    alt="Steam Momo (Chicken)" 
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <span class="absolute top-3 right-3 bg-surface-container-lowest/90 backdrop-blur-xs text-xs font-bold text-[#496800] px-2.5 py-0.5 rounded-full">Vegan Opt.</span>
+                </div>
+                <div class="p-5 flex flex-col flex-grow">
+                  <div class="flex justify-between items-start mb-1">
+                    <h3 class="font-headline font-bold text-lg text-primary">Steam Momo (Chicken)</h3>
+                    <span class="font-bold text-primary font-headline">$12.00</span>
+                  </div>
+                  <div class="flex items-center gap-1 mb-2 text-amber-500 text-xs">
+                    <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="font-bold text-on-surface">4.8</span>
+                    <span class="text-on-surface-variant">(380)</span>
+                  </div>
+                  <p class="text-xs text-on-surface-variant mb-4 flex-grow">Hand-wrapped dumplings with seasoned herbs and roasted sesame chutney.</p>
+                  <button data-item-id="steam-momo-chicken" class="home-add-btn w-full bg-surface-container hover:bg-primary hover:text-white text-primary font-semibold text-xs py-2.5 rounded-full transition-colors flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[16px]">add</span> Add to Cart
+                  </button>
+                </div>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="bg-surface-container-lowest rounded-[24px] overflow-hidden soft-shadow border border-outline-variant/20 flex flex-col group">
+                <div class="h-48 relative overflow-hidden bg-surface-container">
+                  <img 
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxoOWM6VjAMziN7GaXXFoz4rSH6e8CE7ZMULnumNpNKBmFWoqbCm30QKCGTtjrmvmw5rLQSSJK26gNEzkLsAUBUM8-nM8ENXbGX0HCuohRJJhTpqRmwPzSIZQplaRPHJLbVd4lxKsPGPiWAdBayNAbRblDC7edWaq8JjPkaQl3XqZRc14jme7k03HBskON3zlOB1zrwmok2pfg0DvPazuagbT6cRCV2Yq4t498sgOxzTff-fOvMx2K" 
+                    alt="Gourmet Avocado Toast" 
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <span class="absolute top-3 right-3 bg-surface-container-lowest/90 backdrop-blur-xs text-xs font-bold text-[#496800] px-2.5 py-0.5 rounded-full">Brunch</span>
+                </div>
+                <div class="p-5 flex flex-col flex-grow">
+                  <div class="flex justify-between items-start mb-1">
+                    <h3 class="font-headline font-bold text-lg text-primary">Gourmet Avo Toast</h3>
+                    <span class="font-bold text-primary font-headline">$14.00</span>
+                  </div>
+                  <div class="flex items-center gap-1 mb-2 text-amber-500 text-xs">
+                    <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="font-bold text-on-surface">4.8</span>
+                    <span class="text-on-surface-variant">(275)</span>
+                  </div>
+                  <p class="text-xs text-on-surface-variant mb-4 flex-grow">Artisanal sourdough, smashed Hass avocado, poached egg, and microgreens.</p>
+                  <button data-item-id="gourmet-avocado-toast" class="home-add-btn w-full bg-surface-container hover:bg-primary hover:text-white text-primary font-semibold text-xs py-2.5 rounded-full transition-colors flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[16px]">add</span> Add to Cart
+                  </button>
+                </div>
+              </div>
+
+              <!-- Item 4 -->
+              <div class="bg-surface-container-lowest rounded-[24px] overflow-hidden soft-shadow border border-outline-variant/20 flex flex-col group">
+                <div class="h-48 relative overflow-hidden bg-surface-container">
+                  <img 
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQGDq_c3AS0mXagi-cPvoDLN476-JDmdPQDZi2v80C6jIYsNby41MYdfwhCxtVNAgvOUkHxtVRm41OGjMGhjKenb9mCSMVumXmmGx_itWv46QIjvaXg3p0X3OO9ImdhvLwP_VzEg_ktXibk01I6qXsEFjVkj4lcL0WMpfhY4Y0VxQNs_FnnpVL6NfGDRs8nwWDDdmyipq8nQu2zML_MAYfCgMMcI3S3DCi7G9sy1E0L_f40jEOCfOH" 
+                    alt="Warm Fudge Brownie" 
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <span class="absolute top-3 right-3 bg-surface-container-lowest/90 backdrop-blur-xs text-xs font-bold text-[#72564c] px-2.5 py-0.5 rounded-full">Dessert</span>
+                </div>
+                <div class="p-5 flex flex-col flex-grow">
+                  <div class="flex justify-between items-start mb-1">
+                    <h3 class="font-headline font-bold text-lg text-primary">Warm Fudge Brownie</h3>
+                    <span class="font-bold text-primary font-headline">$8.00</span>
+                  </div>
+                  <div class="flex items-center gap-1 mb-2 text-amber-500 text-xs">
+                    <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="font-bold text-on-surface">4.9</span>
+                    <span class="text-on-surface-variant">(195)</span>
+                  </div>
+                  <p class="text-xs text-on-surface-variant mb-4 flex-grow">Warm chocolate brownie served with vanilla bean ice cream and cocoa dust.</p>
+                  <button data-item-id="warm-fudge-brownie" class="home-add-btn w-full bg-surface-container hover:bg-primary hover:text-white text-primary font-semibold text-xs py-2.5 rounded-full transition-colors flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[16px]">add</span> Add to Cart
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Our Story Arch Visual Feature -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+          <div class="bg-surface-container-lowest rounded-[36px] p-8 sm:p-14 soft-shadow border border-outline-variant/20 flex flex-col lg:flex-row items-center gap-12">
+            <!-- Arched Image -->
+            <div class="w-full lg:w-5/12 flex justify-center">
+              <div class="w-full max-w-md h-96 sm:h-[460px] overflow-hidden floral-arch-top shadow-2xl relative">
+                <img 
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTWFLo8oZX6yLqq043LHb2qKO1py4Z9Ke8ARwNLkT-7_pw-LzPxWPR5nCpCn07Dh4Ah56MvH1sCl1vAcZZo9dtQXW0JFGnuYtrx8ih92YvXJymLggeg_VfL-j_-gAUfEKyxAWD6RjMHBSsIGpYF1YcahrDRDvjcqPqaF9ANks4CmSmvA7LHZXBMXdpWjFzu1H_f-sXs9oEHkFiqTJMOb4AdzD9epCtfljotBQht0nrO7LyOjkw8ysMcrB72WFzDzj7pQ" 
+                  alt="Cozy sunroom with flowers and archway" 
+                  class="w-full h-full object-cover"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+              </div>
+            </div>
+
+            <!-- Narrative -->
+            <div class="w-full lg:w-7/12">
+              <span class="text-xs font-bold uppercase tracking-widest text-secondary mb-2 block">Our Heritage</span>
+              <h2 class="font-headline text-3xl sm:text-4xl lg:text-5xl font-bold text-primary mb-6 leading-tight">
+                Our Story: <br /><span class="italic font-serif font-normal text-on-surface">Finding Sukoon</span>
+              </h2>
+              <p class="text-on-surface-variant text-base leading-relaxed mb-4">
+                In Nepali culture, *Chiya* is more than just a cup of spiced tea—it is a warm embrace, an unhurried invitation to pause and connect. *Sukoon* represents the deep, soothing calm that follows.
+              </p>
+              <p class="text-on-surface-variant text-base leading-relaxed mb-8">
+                We designed Chiya and Sukoon to be your neighborhood sanctuary. Surrounded by sunlit floral archways, earthy terracotta tones, and the fragrance of cardamom and roasted beans, you are always welcome to stay as long as you wish.
+              </p>
+              <div class="flex flex-wrap gap-4">
+                <a href="#about" data-route="about" class="bg-primary text-on-primary font-semibold text-sm px-6 py-3 rounded-full hover:bg-primary/90 transition-colors shadow-sm">
+                  Read more about us
+                </a>
+                <a href="#reservations" data-route="reservations" class="bg-surface-container text-primary font-semibold text-sm px-6 py-3 rounded-full hover:bg-surface-dim transition-colors">
+                  Reserve a Table
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Sanctuary Values (3 Pillars) -->
+        <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-surface-container-low rounded-[28px] p-8 border border-outline-variant/20">
+              <div class="w-12 h-12 rounded-2xl bg-[#c8f17a] text-secondary flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-2xl">eco</span>
+              </div>
+              <h3 class="font-headline text-xl font-bold text-primary mb-2">Ethical Himalayan Tea</h3>
+              <p class="text-sm text-on-surface-variant leading-relaxed">Directly sourced from organic smallholder gardens in Ilam, promoting sustainable highland agriculture.</p>
+            </div>
+            <div class="bg-surface-container-low rounded-[28px] p-8 border border-outline-variant/20">
+              <div class="w-12 h-12 rounded-2xl bg-primary-fixed text-primary flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-2xl">yard</span>
+              </div>
+              <h3 class="font-headline text-xl font-bold text-primary mb-2">Sunroom Botanical Ambiance</h3>
+              <p class="text-sm text-on-surface-variant leading-relaxed">A sun-drenched sunroom canopy adorned with cascading florals and natural oak furnishings.</p>
+            </div>
+            <div class="bg-surface-container-low rounded-[28px] p-8 border border-outline-variant/20">
+              <div class="w-12 h-12 rounded-2xl bg-tertiary-fixed text-tertiary flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-2xl">bakery_dining</span>
+              </div>
+              <h3 class="font-headline text-xl font-bold text-primary mb-2">Scratch-Kitchen Baking</h3>
+              <p class="text-sm text-on-surface-variant leading-relaxed">From handmade steam momos to flaky morning pastries, everything is crafted fresh every morning.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Guest Reviews -->
+        <section class="py-20 bg-surface-container-lowest border-t border-outline-variant/20">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-14">
+              <span class="text-xs font-bold uppercase tracking-widest text-secondary mb-2 block">Guest Love</span>
+              <h2 class="font-headline text-3xl sm:text-4xl font-bold text-primary">Words of Sukoon</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div class="bg-surface-container-low p-8 rounded-[28px] border border-outline-variant/20 flex flex-col justify-between">
+                <p class="text-on-surface-variant italic mb-6 leading-relaxed">"The Matka Chiya brought me right back to the foothills of Kathmandu. The aroma, the clay cup, and the quiet sunroom are unmatched."</p>
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-primary/20 text-primary font-bold flex items-center justify-center text-sm">AS</div>
+                  <div>
+                    <h4 class="font-bold text-sm text-on-surface">Aarav Sharma</h4>
+                    <span class="text-xs text-on-surface-variant">Local Resident</span>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-surface-container-low p-8 rounded-[28px] border border-outline-variant/20 flex flex-col justify-between">
+                <p class="text-on-surface-variant italic mb-6 leading-relaxed">"Their avocado toast and chicken momos are divine. The floral ceiling creates the most peaceful aesthetic for remote work or catching up."</p>
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-secondary/20 text-secondary font-bold flex items-center justify-center text-sm">EL</div>
+                  <div>
+                    <h4 class="font-bold text-sm text-on-surface">Elena Lin</h4>
+                    <span class="text-xs text-on-surface-variant">Food & Lifestyle Writer</span>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-surface-container-low p-8 rounded-[28px] border border-outline-variant/20 flex flex-col justify-between">
+                <p class="text-on-surface-variant italic mb-6 leading-relaxed">"A true sanctuary in the city. The staff treats you like family, and the warm fudge brownie is worth every single bite."</p>
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-tertiary/20 text-tertiary font-bold flex items-center justify-center text-sm">MR</div>
+                  <div>
+                    <h4 class="font-bold text-sm text-on-surface">Marcus Reed</h4>
+                    <span class="text-xs text-on-surface-variant">Coffee Enthusiast</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- VIEW: MENU SCREEN -->
+      <!-- ========================================================================= -->
+      <section id="view-menu" class="app-view hidden py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-xs font-bold uppercase tracking-widest text-secondary mb-2 block">Handcrafted Offerings</span>
+          <h1 class="font-headline text-4xl sm:text-5xl font-bold text-primary mb-3">Our Menu</h1>
+          <p class="text-on-surface-variant text-base">Select from our signature Himalayan tea varieties, specialty coffees, brunch classics, and freshly baked pastries.</p>
+        </div>
+
+        <!-- Search Bar & Filters -->
+        <div class="flex flex-col md:flex-row gap-4 items-center justify-between mb-8">
+          <!-- Search input -->
+          <div class="relative w-full md:w-80">
+            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+            <input 
+              id="menu-search-input"
+              type="text" 
+              placeholder="Search Chiya, Momos, Coffee..." 
+              class="w-full pl-11 pr-4 py-3 bg-surface-container-lowest border border-outline-variant/40 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 text-on-surface"
+            />
+          </div>
+
+          <!-- Category filter pills -->
+          <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 no-scrollbar">
+            <button data-category="all" class="menu-cat-btn bg-primary text-on-primary text-xs font-semibold px-5 py-2.5 rounded-full transition-all shrink-0">
+              All Items
+            </button>
+            <button data-category="chiya" class="menu-cat-btn bg-surface-container-lowest text-on-surface-variant text-xs font-semibold px-5 py-2.5 rounded-full border border-outline-variant/30 hover:bg-surface-container transition-all shrink-0">
+              Chiya & Tea
+            </button>
+            <button data-category="coffee" class="menu-cat-btn bg-surface-container-lowest text-on-surface-variant text-xs font-semibold px-5 py-2.5 rounded-full border border-outline-variant/30 hover:bg-surface-container transition-all shrink-0">
+              Coffee
+            </button>
+            <button data-category="breakfast" class="menu-cat-btn bg-surface-container-lowest text-on-surface-variant text-xs font-semibold px-5 py-2.5 rounded-full border border-outline-variant/30 hover:bg-surface-container transition-all shrink-0">
+              Breakfast & Savory
+            </button>
+            <button data-category="momo" class="menu-cat-btn bg-surface-container-lowest text-on-surface-variant text-xs font-semibold px-5 py-2.5 rounded-full border border-outline-variant/30 hover:bg-surface-container transition-all shrink-0">
+              Momo & Bites
+            </button>
+            <button data-category="desserts" class="menu-cat-btn bg-surface-container-lowest text-on-surface-variant text-xs font-semibold px-5 py-2.5 rounded-full border border-outline-variant/30 hover:bg-surface-container transition-all shrink-0">
+              Desserts
+            </button>
+            <button data-category="bakery" class="menu-cat-btn bg-surface-container-lowest text-on-surface-variant text-xs font-semibold px-5 py-2.5 rounded-full border border-outline-variant/30 hover:bg-surface-container transition-all shrink-0">
+              Bakery
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Menu Cards Grid Container -->
+        <div id="menu-grid-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Injected via TypeScript -->
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- VIEW: ABOUT US SCREEN -->
+      <!-- ========================================================================= -->
+      <section id="view-about" class="app-view hidden py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-bold uppercase tracking-widest text-secondary mb-2 block">Our Roots & Heritage</span>
+          <h1 class="font-headline text-4xl sm:text-5xl font-bold text-primary mb-4">The Art of Slow Living</h1>
+          <p class="text-on-surface-variant text-base sm:text-lg leading-relaxed">
+            Founded with a deep appreciation for Himalayan hospitality, Chiya and Sukoon is an invitation to slow down, share stories, and rediscover inner calm.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+          <div class="rounded-[32px] overflow-hidden shadow-xl h-[420px]">
+            <img 
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJXgo9poeNtnHups7XkDCrk_ylfGMq9o6w6DOwXIoy8uVp3OJiy1SsPE2EpPOAeNCOVsGzgQBqJK2p2_nG7xnWCnqaC7WDKxTLk5RjrnFyGbZg6X9oN-h71K4i5wZkoxr6lP_8zScZLWCFqDv80HSpczVNrJDa3OsTsUzDM_yM9bE_vbBPd4n5fJoDyDETrVCXxiu727oywZlkYxwwR9Bur7fIeGXR7jSq0NeEMOYswF0mSjZUkJre3BLrNcG20iVimA" 
+              alt="Sunroom with plants and warm archways" 
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div>
+            <h2 class="font-headline text-3xl font-bold text-primary mb-4">What is Sukoon?</h2>
+            <p class="text-on-surface-variant text-base leading-relaxed mb-4">
+              Sukoon translates to peace of mind, serenity, and complete solace. In a world of rushing deadlines and constant digital noise, we wanted to build a sanctuary where you can hear yourself think.
+            </p>
+            <p class="text-on-surface-variant text-base leading-relaxed mb-6">
+              Our tea leaves come straight from high-altitude estates in Nepal and Darjeeling. Simmered slowly with freshly ground spices in small batches, every sip carries warmth, richness, and tradition.
+            </p>
+            <div class="flex items-center gap-6 pt-4 border-t border-outline-variant/30">
+              <div>
+                <span class="font-headline text-3xl font-bold text-primary">100%</span>
+                <p class="text-xs text-on-surface-variant font-medium">Orthodox Single-Origin</p>
+              </div>
+              <div>
+                <span class="font-headline text-3xl font-bold text-secondary">Scratch</span>
+                <p class="text-xs text-on-surface-variant font-medium">Daily Artisan Kitchen</p>
+              </div>
+              <div>
+                <span class="font-headline text-3xl font-bold text-primary">Eco</span>
+                <p class="text-xs text-on-surface-variant font-medium">Zero-Plastic Clay Cups</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team & Philosophy Highlights -->
+        <div class="bg-surface-container-low rounded-[32px] p-8 sm:p-12 border border-outline-variant/20 text-center max-w-4xl mx-auto">
+          <span class="material-symbols-outlined text-4xl text-primary mb-4">nest_eco_leaf</span>
+          <h3 class="font-headline text-2xl sm:text-3xl font-bold text-primary mb-3">Our Core Philosophy</h3>
+          <p class="text-on-surface-variant text-base leading-relaxed max-w-2xl mx-auto mb-8">
+            We believe mindful hospitality begins with honoring our farmers, nurturing our community, and creating spaces where every guest feels welcomed with open arms.
+          </p>
+          <a href="#reservations" data-route="reservations" class="bg-primary text-on-primary font-semibold px-8 py-3.5 rounded-full hover:bg-primary/90 transition-colors inline-block">
+            Visit Our Sanctuary
+          </a>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- VIEW: GALLERY SCREEN -->
+      <!-- ========================================================================= -->
+      <section id="view-gallery" class="app-view hidden py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-xs font-bold uppercase tracking-widest text-secondary mb-2 block">Visual Journal</span>
+          <h1 class="font-headline text-4xl sm:text-5xl font-bold text-primary mb-3">Moments of Sukoon</h1>
+          <p class="text-on-surface-variant text-base">Step inside our sun-drenched sunroom, morning tea rituals, and cozy corners.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="rounded-[24px] overflow-hidden soft-shadow group h-80 relative">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTWFLo8oZX6yLqq043LHb2qKO1py4Z9Ke8ARwNLkT-7_pw-LzPxWPR5nCpCn07Dh4Ah56MvH1sCl1vAcZZo9dtQXW0JFGnuYtrx8ih92YvXJymLggeg_VfL-j_-gAUfEKyxAWD6RjMHBSsIGpYF1YcahrDRDvjcqPqaF9ANks4CmSmvA7LHZXBMXdpWjFzu1H_f-sXs9oEHkFiqTJMOb4AdzD9epCtfljotBQht0nrO7LyOjkw8ysMcrB72WFzDzj7pQ" alt="Sunroom dining" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6 text-white font-medium">The Sunroom Arch</div>
+          </div>
+          <div class="rounded-[24px] overflow-hidden soft-shadow group h-80 relative">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvOGZwhFdQEHEGbsIXXyauZ-sZwDUirXJEgf4yGVD-6thTqTzjDf6Mq2uJltuCIPgotvhexIKq3mtFfni6Bjt3a6LWb2E8ZF30lyPET8PgEc-wFvh0ZTGYDNI_Eg7QYQAvkTodg-4JcaPruX0pbakjjNI4poAwyguLFhQyI3nufeiO6kDi8RiVHs2Oz6Y0xZOloFGcuuHPoc_-cI1WLkTeEDPfpMCG8ZwWV3VVVv-Dke5zuBchV2KY" alt="Chiya brewing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6 text-white font-medium">Himalayan Spiced Brew</div>
+          </div>
+          <div class="rounded-[24px] overflow-hidden soft-shadow group h-80 relative">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJXgo9poeNtnHups7XkDCrk_ylfGMq9o6w6DOwXIoy8uVp3OJiy1SsPE2EpPOAeNCOVsGzgQBqJK2p2_nG7xnWCnqaC7WDKxTLk5RjrnFyGbZg6X9oN-h71K4i5wZkoxr6lP_8zScZLWCFqDv80HSpczVNrJDa3OsTsUzDM_yM9bE_vbBPd4n5fJoDyDETrVCXxiu727oywZlkYxwwR9Bur7fIeGXR7jSq0NeEMOYswF0mSjZUkJre3BLrNcG20iVimA" alt="Cafe interior lounge" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6 text-white font-medium">Quiet Afternoon Sanctuary</div>
+          </div>
+          <div class="rounded-[24px] overflow-hidden soft-shadow group h-80 relative">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7ZkGC4HWZnXRnCxHg4fD4rMlP8YEaFgy2c-Uu6zBnU2I45uARt2Q1xFoPH7Mf8FVKulPuQoh4QgYp79a6fAZDmWPgJHBR6-b3SSapTCeR5cYsssPJsI-LVbJKMzx7M8AdrAD1C3lmehbrIDgKIebmpwpoNiQeG1lR4zI6iOmGTiFR-0uprzXe6fYcyfcRfmp49ht35qCYmN06ov0g4npCgpWmE2G39WyLLy8XCc_mLgGakrTceqXq" alt="Fresh Momos in Steamer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6 text-white font-medium">Bamboo Steamed Momos</div>
+          </div>
+          <div class="rounded-[24px] overflow-hidden soft-shadow group h-80 relative">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuALemeENfGNhhq8a5eRYIubXnkycqtp2A_Xo9MmEPrKqY3z2Kc6cJ7UoWF9qwQaJe76WhqawRLQL3Xes2umfrjNltZ1cDtrYm0LG7RqGWbjoGRjzr_JmWfJ-z_ja1IZCG9AnDZQ-HwHStq-DcavhM0hx5RX13MUCjPCWj3wEsExXexhHmeg2dsUvadT9sjZt_fUmIljXUUNxcr-RizOk-n4CH1xc7KTxdGY9u5psIxq8tegT3gX89MQ" alt="Golden Pancakes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6 text-white font-medium">Buttermilk Pancakes</div>
+          </div>
+          <div class="rounded-[24px] overflow-hidden soft-shadow group h-80 relative">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzni5xaBpqGcuHXHHh_UloG8Rh0MSC8akoMEC0E1qDfCmEVne3cwS3UbSrG94zn-pSyzeL8Jy2yIV1lmstAVKp-CpaQ9eEszOSRbveZ9sHSiFKdU8ltKZsN3GgeQO9SjVKn49Kde1Xy2kmyr15hJXpmHUZGWGAszOitmgdIoL-vPjVhlk6VzVfgERLmlcx9Bb-4NqIvKBEcUJtU4V_0K3eK4Pk-HODDrjQNocMybzHR7NikjO-eATG" alt="Barista Latte Art" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6 text-white font-medium">Artisanal Espresso</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- VIEW: RESERVATIONS SCREEN -->
+      <!-- ========================================================================= -->
+      <section id="view-reservations" class="app-view hidden py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <span class="text-xs font-bold uppercase tracking-widest text-secondary mb-2 block">Table Booking</span>
+          <h1 class="font-headline text-4xl sm:text-5xl font-bold text-primary mb-3">Reserve Your Sukoon</h1>
+          <p class="text-on-surface-variant text-base">Step into our sun-drenched sunroom. Secure a table surrounded by floral tranquility and aesthetic dining experiences.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          
+          <!-- Booking Form (7 Cols) -->
+          <div class="lg:col-span-7 bg-surface-container-lowest rounded-[32px] p-8 sm:p-10 soft-shadow border border-outline-variant/20">
+            <h2 class="font-headline text-2xl font-bold text-primary mb-6">Book a Table</h2>
+            <form id="reservation-form" class="space-y-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="res-name" class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">Full Name *</label>
+                  <input type="text" id="res-name" required placeholder="Aarav Sharma" class="w-full px-4 py-3 bg-surface-container border border-outline-variant/30 rounded-2xl text-sm focus:ring-2 focus:ring-primary/40 focus:outline-none text-on-surface" />
+                </div>
+                <div>
+                  <label for="res-email" class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">Email Address *</label>
+                  <input type="email" id="res-email" required placeholder="aarav@example.com" class="w-full px-4 py-3 bg-surface-container border border-outline-variant/30 rounded-2xl text-sm focus:ring-2 focus:ring-primary/40 focus:outline-none text-on-surface" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                  <label for="res-date" class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">Date *</label>
+                  <input type="date" id="res-date" class="w-full px-4 py-3 bg-surface-container border border-outline-variant/30 rounded-2xl text-sm focus:ring-2 focus:ring-primary/40 focus:outline-none text-on-surface" />
+                </div>
+                <div>
+                  <label for="res-time" class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">Time Slot *</label>
+                  <select id="res-time" class="w-full px-4 py-3 bg-surface-container border border-outline-variant/30 rounded-2xl text-sm focus:ring-2 focus:ring-primary/40 focus:outline-none text-on-surface">
+                    <option>09:00 AM</option>
+                    <option>10:30 AM</option>
+                    <option selected>12:00 PM</option>
+                    <option>01:30 PM</option>
+                    <option>03:00 PM</option>
+                    <option>04:30 PM</option>
+                    <option>06:00 PM</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="res-guests" class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">Guests *</label>
+                  <select id="res-guests" class="w-full px-4 py-3 bg-surface-container border border-outline-variant/30 rounded-2xl text-sm focus:ring-2 focus:ring-primary/40 focus:outline-none text-on-surface">
+                    <option>1 Guest</option>
+                    <option selected>2 Guests</option>
+                    <option>3 Guests</option>
+                    <option>4 Guests</option>
+                    <option>5-6 Guests</option>
+                    <option>7+ Large Group</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="res-area" class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">Seating Area Preference</label>
+                <select id="res-area" class="w-full px-4 py-3 bg-surface-container border border-outline-variant/30 rounded-2xl text-sm focus:ring-2 focus:ring-primary/40 focus:outline-none text-on-surface">
+                  <option selected>Floral Sunroom Canopy</option>
+                  <option>Cozy Hearth & Books Corner</option>
+                  <option>Main Dining Lounge</option>
+                  <option>Outdoor Garden Patio</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="res-preferences" class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">Special Notes & Celebrations</label>
+                <textarea id="res-preferences" rows="3" placeholder="Dietary allergies, high tea setup, birthday celebration..." class="w-full px-4 py-3 bg-surface-container border border-outline-variant/30 rounded-2xl text-sm focus:ring-2 focus:ring-primary/40 focus:outline-none text-on-surface"></textarea>
+              </div>
+
+              <button type="submit" class="w-full bg-primary text-on-primary font-semibold py-4 rounded-full hover:bg-primary/90 transition-all shadow-md flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-[20px]">calendar_today</span>
+                <span>Confirm Reservation</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Contact & Location Info (5 Cols) -->
+          <div class="lg:col-span-5 flex flex-col gap-6">
+            <div class="bg-surface-container-lowest rounded-[32px] p-8 soft-shadow border border-outline-variant/20">
+              <h3 class="font-headline text-2xl font-bold text-primary mb-6">Get in Touch</h3>
+              
+              <div class="space-y-5">
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined text-xl">location_on</span>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-sm text-on-surface">Our Sanctuary</h4>
+                    <p class="text-xs text-on-surface-variant leading-relaxed">123 Tranquil Lane, Floral District<br />San Francisco, CA 94102</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined text-xl">schedule</span>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-sm text-on-surface">Opening Hours</h4>
+                    <p class="text-xs text-on-surface-variant">Monday – Friday: 8:00 AM – 6:00 PM<br />Saturday – Sunday: 9:00 AM – 7:00 PM</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined text-xl">call</span>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-sm text-on-surface">Phone & Inquiries</h4>
+                    <p class="text-xs text-on-surface-variant">+1 (555) 123-4567<br />hello@chiyaandsukoon.com</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stylized Map Preview -->
+            <div class="bg-surface-container-lowest rounded-[32px] overflow-hidden soft-shadow border border-outline-variant/20 relative h-60">
+              <img 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDM6L5eizLeP2ui0NiTN_RZVN5PfkUyAdHaBS5Yo27ET3zzOeg9Sk9p4-dfnWD_MOsmmwRt4xZTRnrDbB4XFDRtNK_xBgjfbJDzoogYIJHul9VeUnnRSGQY4IKWiWBtkbtjijj1Z_YSLaAOn1pSmC5BnFo6xfgv0aCibIlKENZYPv-OvYZAX8zk2twUpeNiCRr4IuVL-gD-gDOdzwzSWpVw9A8Joy5xiSvVuud4AyaCp6w5G6jiS-D" 
+                alt="Map location of Chiya and Sukoon" 
+                class="w-full h-full object-cover"
+              />
+              <div class="absolute inset-0 bg-black/20 flex items-center justify-center p-4">
+                <div class="bg-surface-container-lowest/95 backdrop-blur-md px-4 py-2 rounded-full shadow-lg flex items-center gap-2 border border-primary/20">
+                  <span class="material-symbols-outlined text-primary text-base">pin_drop</span>
+                  <span class="text-xs font-bold text-primary">Chiya and Sukoon Cafe</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- VIEW: CART & ORDER ONLINE SCREEN -->
+      <!-- ========================================================================= -->
+      <section id="view-cart" class="app-view hidden py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-xs font-bold uppercase tracking-widest text-secondary mb-2 block">Checkout & Order</span>
+          <h1 class="font-headline text-4xl sm:text-5xl font-bold text-primary mb-3">Your Cart</h1>
+          <p class="text-on-surface-variant text-base">Review your handcrafted selections before bringing Sukoon home.</p>
+        </div>
+
+        <!-- Empty State -->
+        <div id="cart-page-empty" class="hidden text-center py-20 bg-surface-container-lowest rounded-[32px] border border-outline-variant/20 max-w-xl mx-auto p-8 soft-shadow">
+          <span class="material-symbols-outlined text-6xl text-outline-variant mb-4">shopping_bag</span>
+          <h3 class="font-headline text-2xl font-bold text-primary mb-2">Your cart is currently empty</h3>
+          <p class="text-sm text-on-surface-variant mb-8">Discover our fresh momos, brewed orthodox tea, and warm pastries.</p>
+          <a href="#menu" data-route="menu" class="bg-primary text-on-primary font-semibold text-sm px-8 py-3.5 rounded-full hover:bg-primary/90 transition-colors inline-flex items-center gap-2 shadow-sm">
+            <span>Browse Full Menu</span>
+            <span class="material-symbols-outlined text-base">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- Full Content Container -->
+        <div id="cart-page-content" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Items List Column (8 Cols) -->
+          <div class="lg:col-span-8 space-y-4">
+            
+            <!-- Order Type Selector -->
+            <div class="bg-surface-container-lowest rounded-[24px] p-4 soft-shadow border border-outline-variant/20 flex gap-2">
+              <button data-type="delivery" class="order-type-btn flex-1 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-primary text-on-primary">
+                Door Delivery
+              </button>
+              <button data-type="pickup" class="order-type-btn flex-1 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container">
+                Cafe Pickup
+              </button>
+              <button data-type="dinein" class="order-type-btn flex-1 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container">
+                Dine-in Table Order
+              </button>
+            </div>
+
+            <!-- Dynamic Cart Items injected here -->
+            <div id="cart-page-items" class="space-y-4">
+              <!-- Injected via TypeScript -->
+            </div>
+
+            <!-- Promo Code Input Box -->
+            <div class="bg-surface-container-lowest rounded-[24px] p-6 soft-shadow border border-outline-variant/20 flex flex-col sm:flex-row gap-3 items-center justify-between">
+              <div class="w-full sm:w-auto">
+                <span class="text-xs font-bold text-on-surface block">Have a promo code?</span>
+                <span class="text-xs text-on-surface-variant">Use code <span class="font-bold text-secondary">SUKOON10</span> for 10% off</span>
+              </div>
+              <div class="flex gap-2 w-full sm:w-72">
+                <input id="promo-input" type="text" placeholder="Promo code" class="flex-grow px-4 py-2.5 bg-surface-container rounded-full text-xs font-semibold uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-primary/30" />
+                <button id="promo-apply-btn" class="bg-surface-container-high hover:bg-primary hover:text-white text-primary text-xs font-bold px-5 py-2.5 rounded-full transition-colors shrink-0">
+                  Apply
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Order Summary Column (4 Cols Sticky) -->
+          <div class="lg:col-span-4 bg-surface-container-lowest rounded-[32px] p-6 sm:p-8 soft-shadow border border-outline-variant/20 sticky top-28 space-y-6">
+            <h3 class="font-headline text-2xl font-bold text-primary pb-4 border-b border-outline-variant/20">Order Summary</h3>
+
+            <div class="space-y-3 text-sm">
+              <div class="flex justify-between text-on-surface-variant">
+                <span>Subtotal</span>
+                <span id="cart-page-subtotal" class="font-semibold text-on-surface">$0.00</span>
+              </div>
+              <div class="flex justify-between text-on-surface-variant">
+                <span>Delivery Fee</span>
+                <span id="cart-page-delivery" class="font-semibold text-on-surface">$4.50</span>
+              </div>
+              <div class="flex justify-between text-on-surface-variant">
+                <span>Estimated Taxes (8%)</span>
+                <span id="cart-page-taxes" class="font-semibold text-on-surface">$0.00</span>
+              </div>
+              <div id="cart-page-discount-row" class="hidden flex justify-between text-secondary font-bold">
+                <span>Promo Discount</span>
+                <span id="cart-page-discount">-$0.00</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-outline-variant/20 flex justify-between items-baseline">
+              <span class="font-headline text-lg font-bold text-on-surface">Total</span>
+              <span id="cart-page-total" class="font-headline text-3xl font-extrabold text-primary">$0.00</span>
+            </div>
+
+            <button id="cart-checkout-btn" class="w-full bg-primary text-on-primary font-bold py-4 rounded-full hover:bg-primary/90 transition-all shadow-md flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-[20px]">lock</span>
+              <span>Proceed to Checkout</span>
+            </button>
+
+            <p class="text-[11px] text-center text-on-surface-variant">
+              🔒 Safe & contactless checkout. Freshly prepared to order.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- VIEW: CONTACT & HOURS SCREEN -->
+      <!-- ========================================================================= -->
+      <section id="view-contact" class="app-view hidden py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <span class="text-xs font-bold uppercase tracking-widest text-secondary mb-2 block">We’d Love to Hear from You</span>
+          <h1 class="font-headline text-4xl sm:text-5xl font-bold text-primary mb-3">Contact & Visit</h1>
+          <p class="text-on-surface-variant text-base">Whether you are planning a private gathering, inquiring about our loose-leaf teas, or just saying hello.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- Form -->
+          <div class="bg-surface-container-lowest rounded-[32px] p-8 sm:p-10 soft-shadow border border-outline-variant/20">
+            <h2 class="font-headline text-2xl font-bold text-primary mb-6">Send Us a Message</h2>
+            <form id="contact-form" class="space-y-4">
+              <div>
+                <label for="contact-name" class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">Name *</label>
+                <input type="text" id="contact-name" required placeholder="Your name" class="w-full px-4 py-3 bg-surface-container border border-outline-variant/30 rounded-2xl text-sm focus:ring-2 focus:ring-primary/40 focus:outline-none" />
+              </div>
+              <div>
+                <label for="contact-email" class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">Email Address *</label>
+                <input type="email" id="contact-email" required placeholder="Your email" class="w-full px-4 py-3 bg-surface-container border border-outline-variant/30 rounded-2xl text-sm focus:ring-2 focus:ring-primary/40 focus:outline-none" />
+              </div>
+              <div>
+                <label for="contact-subject" class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">Subject</label>
+                <select id="contact-subject" class="w-full px-4 py-3 bg-surface-container border border-outline-variant/30 rounded-2xl text-sm focus:ring-2 focus:ring-primary/40 focus:outline-none">
+                  <option>General Inquiries & Feedback</option>
+                  <option>Private Events & Floral Sunroom Buyouts</option>
+                  <option>Catering & Bulk Spiced Chiya Orders</option>
+                  <option>Wholesale Loose-Leaf Tea</option>
+                </select>
+              </div>
+              <div>
+                <label for="contact-message" class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">Message *</label>
+                <textarea id="contact-message" rows="4" required placeholder="How can we assist you?" class="w-full px-4 py-3 bg-surface-container border border-outline-variant/30 rounded-2xl text-sm focus:ring-2 focus:ring-primary/40 focus:outline-none"></textarea>
+              </div>
+              <button type="submit" class="w-full bg-primary text-on-primary font-semibold py-4 rounded-full hover:bg-primary/90 transition-all shadow-sm flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-[18px]">send</span>
+                <span>Send Message</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- FAQ & Schedule Accordion -->
+          <div class="space-y-6">
+            <div class="bg-surface-container-lowest rounded-[32px] p-8 soft-shadow border border-outline-variant/20">
+              <h3 class="font-headline text-2xl font-bold text-primary mb-4">Frequently Asked Questions</h3>
+              
+              <div class="space-y-4">
+                <div class="p-4 rounded-2xl bg-surface-container">
+                  <h4 class="font-bold text-sm text-on-surface mb-1">Do you accommodate vegan and dairy-free diets?</h4>
+                  <p class="text-xs text-on-surface-variant leading-relaxed">Yes! All of our spiced Chiya blends can be prepared with organic oat milk or almond milk, and we have a dedicated selection of vegan momos and bakery items.</p>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-surface-container">
+                  <h4 class="font-bold text-sm text-on-surface mb-1">Is there high-speed Wi-Fi and quiet workspaces?</h4>
+                  <p class="text-xs text-on-surface-variant leading-relaxed">Absolutely. Our Hearth room and side lounges are equipped with high-speed fiber internet and charging ports at every booth.</p>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-surface-container">
+                  <h4 class="font-bold text-sm text-on-surface mb-1">Do you accept walk-ins for table seating?</h4>
+                  <p class="text-xs text-on-surface-variant leading-relaxed">We always reserve 40% of our seating for walk-in guests. For guaranteed sunroom seating or groups larger than 4, reservations are recommended.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Interactive Checkout Modal -->
+    <div id="checkout-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs hidden">
+      <div class="bg-surface-container-lowest rounded-[32px] max-w-lg w-full p-8 soft-shadow border border-outline-variant/30 max-h-[90vh] overflow-y-auto no-scrollbar">
+        <div class="flex justify-between items-center pb-4 border-b border-outline-variant/20 mb-6">
+          <div>
+            <h3 class="font-headline text-2xl font-bold text-primary">Complete Your Order</h3>
+            <span id="checkout-modal-count" class="text-xs text-on-surface-variant">0 items</span>
+          </div>
+          <button id="checkout-modal-close" class="p-2 rounded-full hover:bg-surface-container text-on-surface-variant">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+
+        <form id="checkout-form" class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-on-surface-variant uppercase mb-1">Your Name</label>
+            <input type="text" required placeholder="Aarav Sharma" class="w-full px-4 py-2.5 bg-surface-container border border-outline-variant/30 rounded-xl text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-on-surface-variant uppercase mb-1">Delivery / Table Address</label>
+            <input type="text" required placeholder="Apt 4B, 100 Mission St or Table #4" class="w-full px-4 py-2.5 bg-surface-container border border-outline-variant/30 rounded-xl text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-on-surface-variant uppercase mb-1">Phone Number</label>
+            <input type="tel" required placeholder="+1 (555) 000-0000" class="w-full px-4 py-2.5 bg-surface-container border border-outline-variant/30 rounded-xl text-sm" />
+          </div>
+          
+          <div class="p-4 rounded-2xl bg-surface-container border border-outline-variant/30 space-y-2">
+            <div class="flex justify-between items-center text-sm font-bold">
+              <span>Total Amount Due</span>
+              <span id="checkout-modal-total" class="text-primary font-headline text-xl">$0.00</span>
+            </div>
+            <p class="text-xs text-on-surface-variant">Pay with Apple Pay, Google Pay, or Credit Card on arrival.</p>
+          </div>
+
+          <button type="submit" class="w-full bg-primary text-on-primary font-bold py-3.5 rounded-full hover:bg-primary/90 transition-colors shadow-md">
+            Place Order Now
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Reservation Success Modal -->
+    <div id="reservation-success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs hidden">
+      <div class="bg-surface-container-lowest rounded-[32px] max-w-md w-full p-8 text-center soft-shadow border border-outline-variant/30">
+        <div class="w-16 h-16 rounded-full bg-[#c8f17a] text-secondary flex items-center justify-center mx-auto mb-4">
+          <span class="material-symbols-outlined text-3xl">task_alt</span>
+        </div>
+        <h3 class="font-headline text-2xl font-bold text-primary mb-1">Table Reserved!</h3>
+        <p class="text-xs text-on-surface-variant mb-6">Booking Reference: <span id="res-confirm-ref" class="font-bold text-primary">#SK-0000</span></p>
+
+        <div class="bg-surface-container rounded-2xl p-4 text-left text-xs space-y-2 mb-6 border border-outline-variant/20">
+          <div class="flex justify-between"><span class="text-on-surface-variant">Guest:</span> <strong id="res-confirm-name" class="text-on-surface"></strong></div>
+          <div class="flex justify-between"><span class="text-on-surface-variant">Date & Time:</span> <strong id="res-confirm-date-time" class="text-on-surface"></strong></div>
+          <div class="flex justify-between"><span class="text-on-surface-variant">Party Size:</span> <strong id="res-confirm-guests" class="text-on-surface"></strong></div>
+          <div class="flex justify-between"><span class="text-on-surface-variant">Area:</span> <strong id="res-confirm-area" class="text-on-surface"></strong></div>
+        </div>
+
+        <button id="res-modal-close" class="w-full bg-primary text-on-primary font-semibold py-3 rounded-full hover:bg-primary/90 transition-colors text-sm">
+          Done
+        </button>
+      </div>
+    </div>
+
+    <!-- Floating Toast Notifications Container -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-lowest border-t border-outline-variant/20 pt-16 pb-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+          
+          <!-- Col 1: Brand Info -->
+          <div class="md:col-span-1">
+            <div class="flex items-center gap-2.5 mb-4">
+              <img src="/assets/logo.svg" alt="Chiya and Sukoon Logo" class="w-8 h-8 rounded-full shadow-xs" />
+              <span class="font-headline font-bold text-xl text-primary">Chiya and Sukoon</span>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed mb-4">
+              A serene neighborhood haven serving traditional spiced Himalayan tea, specialty coffee, and handcrafted comfort food.
+            </p>
+            <div class="text-xs text-on-surface-variant">
+              © 2026 Chiya and Sukoon. All rights reserved.
+            </div>
+          </div>
+
+          <!-- Col 2: Quick Links -->
+          <div>
+            <h4 class="font-headline font-bold text-sm text-primary mb-4">Explore</h4>
+            <ul class="space-y-2 text-xs text-on-surface-variant">
+              <li><a href="#home" data-route="home" class="hover:text-primary transition-colors">Home</a></li>
+              <li><a href="#menu" data-route="menu" class="hover:text-primary transition-colors">Our Menu</a></li>
+              <li><a href="#about" data-route="about" class="hover:text-primary transition-colors">About Our Story</a></li>
+              <li><a href="#gallery" data-route="gallery" class="hover:text-primary transition-colors">Photo Gallery</a></li>
+              <li><a href="#reservations" data-route="reservations" class="hover:text-primary transition-colors">Book a Table</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 3: Hours & Location -->
+          <div>
+            <h4 class="font-headline font-bold text-sm text-primary mb-4">Sanctuary Hours</h4>
+            <div class="text-xs text-on-surface-variant space-y-1.5">
+              <p><strong class="text-on-surface">Mon – Fri:</strong> 8:00 AM – 6:00 PM</p>
+              <p><strong class="text-on-surface">Sat – Sun:</strong> 9:00 AM – 7:00 PM</p>
+              <p class="pt-2"><strong class="text-on-surface">Address:</strong><br />123 Tranquil Lane, Floral District, San Francisco</p>
+            </div>
+          </div>
+
+          <!-- Col 4: Newsletter -->
+          <div>
+            <h4 class="font-headline font-bold text-sm text-primary mb-4">Stay Connected</h4>
+            <p class="text-xs text-on-surface-variant mb-4">Receive invitations to seasonal tea tastings and exclusive community events.</p>
+            <form id="newsletter-form" class="space-y-2">
+              <input type="email" required placeholder="Enter your email" class="w-full px-4 py-2.5 bg-surface-container border border-outline-variant/30 rounded-full text-xs focus:ring-2 focus:ring-primary/40 focus:outline-none" />
+              <button type="submit" class="w-full bg-primary text-on-primary font-semibold text-xs py-2.5 rounded-full hover:bg-primary/90 transition-colors">
+                Subscribe
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+
+    <!-- Vanilla TypeScript/JavaScript Entry Point -->
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
